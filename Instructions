@@ -1,0 +1,24 @@
+Genre type: RPG
+
+**Player stats:** 
+starting health - 100 
+
+**Class**
+Warrior: Strength: +15; Mana: +10
+Mage: Strength: +5; Mana: +20
+
+Starting Point: Village 
+
+Player meets instructor & choose his/her class; if you choose warrior class, show stat, are you sure: yes/ no / returns 
+
+Go to Dungeon: 
+
+Fight a monster - 100 healths points 
+
+player attacks, damages 15 health points 
+
+monster attack, damages 10 
+
+return to village, and buy potions from instructor 
+
+potions will restore 30 health
