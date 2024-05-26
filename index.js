@@ -1,7 +1,6 @@
-const adventure = true;
 class player {
-  constructor(name, health) {
-    (this.name = name), (this.health = health);
+  constructor(name) {
+    this.name = name;
     this.maxHealth = 100;
   }
   takeDamage(damageTaken) {
@@ -14,29 +13,28 @@ class player {
   }
 }
 class Warrior extends player {
-  constructor(name, health) {
-    super(name, health);
+  constructor(name) {
+    super(name);
     this.strength = 15;
+    this.intelligence = 5;
   }
 }
 class Mage extends player {
-  constructor(name, health) {
-    super(name, health);
+  constructor(name) {
+    super(name);
+    this.strength = 5;
     this.intelligence = 15;
   }
 }
 class Monster extends player {
   constructor(name, health, attackPower) {
-    super();
-    this.name = name;
-    this.health = health;
+    super(name, health);
     this.attackPower = attackPower;
   }
   attack() {
-    super.takeDamage(this.attackPower); // not working
+    takeDamage(this.attackPower); // not working
   }
 }
-//mob = new Monster("slime", 20, 5);
 
 function userInput(user) {
   const prompt = require("prompt-sync")({ sigint: true });
@@ -45,31 +43,35 @@ function userInput(user) {
 
 function introduction() {
   while (true) {
-    let intro = "Welcome adventurer. Please select between Warrior or Mage:  ";
-    let response = userInput(intro);
+    let intro =
+      "Welcome adventurer. Please select your class: Warrior or Mage:  ";
+    let response = userInput(intro).trim();
     if (response !== "Warrior" && response !== "Mage") {
-      console.log("Invalid response. Please select between Warrior or Mage \n");
+      console.log("Invalid response. Please select between Warrior or Mage: ");
     } else if (response === "Warrior") {
       console.log("You have selected: " + response);
-      war = new Warrior("Warrior", 80);
+      war = new Warrior("Warrior");
       return war;
     } else if (response === "Mage") {
       console.log("You have selected: " + response);
-      mage = new Mage("Mage", 80);
+      mage = new Mage("Mage");
       return mage;
     }
   }
 }
 let person = introduction();
-//console.log(person);
+console.log(person);
 
 function town() {
-  let intro = "Welcome to town. What would you like to do? Inn or Battle? ";
-  let response = userInput(intro);
-  if (response !== "Inn" && "Battle") {
-    console.log("Invalid response. Please select Inn or Battle");
-  } else if (response === "Inn") {
-    console.log(person.healDamage());
+  while (true) {
+    let intro =
+      "Welcome to Dweller Town. You must defeat the slime that is preventing people from leaving the town. You are in town square. What would you like to do? To the Inn or Battle? ";
+    let response = userInput(intro);
+    if (response !== "Inn" && "Battle") {
+      console.log("Invalid response. Please select Inn or Battle");
+    } else if (response === "Inn") {
+      console.log(person.healDamage());
+    }
   }
 }
 
@@ -80,11 +82,11 @@ function randomNumber(min, max) {
 }
 
 function battle() {
+  //mob = new Monster("slime", 20, 5);
   let engagedInBattle = "";
   while (engagedInBattle !== "fight" || engagedInBattle !== "flee") {
     engagedInBattle = prompt("You have encountered a monster. Fight or flee?!");
   }
-
   if (engagedInBattle === "fight") {
   } else {
   }
